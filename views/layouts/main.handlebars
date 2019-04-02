@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <title>Home Page</title>
-</head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PlanHub: Create Tasks</title>
+        <html>
+        <head>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Shadows+Into+Light+Two" rel="stylesheet">
+            <link type="text/css" rel="stylesheet" href="assets/css/materialize.css"  media="screen,projection"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </head>
+<body class="bkgd">
+<header>
+    <div class="navbar-fixed">
+      <nav class="nav-wrapper blue lighten-3 z-depth-2"> 
+          <div class="container main-font">
+              <a href="#!" class="brand-logo">PlanHub</a>
+              <!-- <img src="assets/images/planhub_md02.png" class="brand-logo"> -->
+              <a href="" data-target="mobile-menu" class="sidenav-trigger">
+                  <i class="material-icons">menu</i>
+              </a>
+              <ul class="right hide-on-med-and-down">
+                  <li><a href="#">Dashboard</a></li>
+                  <li><a href="#">Log Out</a></li>
+              </ul>
+              <ul class="sidenav" id="mobile-menu">
+                  <li><a href="/home.html">Dashboard</a></li>
+                  <li><a href="#">Log Out</a></li>
+              </ul>
+          </div>
+      </nav>
+    </div>
+</header>
+   
+{{{body}}}
 
-<body>
-  {{{body}}}
+<footer class="main-footer blue lighten-3 main-font z-depth-5" id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col offset-l2 sl2 s12" style="text-align: right;">
+          <h5 class="white-text">Contact</h5></a>
+          <ul>
+            <li><span class="white-text">PlanHub<br/>1325 4th Ave #505, Seattle, WA </span></li>
+            <li><span class="white-text"><a href="mailto:contact@planhub.org">contact@planhub.org</a></span></li>
+            <li><span class="white-text">(206)555-5555</span></li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright blue lighten-2 main-font">
+    <div class="container">
+      <span class="white-text" style="text-align: left">© 2019 <a href="/" class="white-text" target="_blank">PlanHub</a></span>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="assets/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $(".sidenav").sidenav();
+    });
+  </script>
+
 </body>
-
 </html>
