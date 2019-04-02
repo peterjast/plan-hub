@@ -3,12 +3,14 @@ var db = require("../models");
 module.exports = function(app) {
   //Create routing for the login-create username
 
-  //Create a new user on the login screen
-  app.post("api/user", function(req, res) {
+  //Create a new user on the signup screen
+  app.post("/api/user", function(req, res) {
     db.User.create(req.body).then(function(dbUser) {
       res.json(dbUser);
     });
   });
+
+  
 
   // Create routing for the parents page
 
