@@ -1,33 +1,43 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+<main class="no-padding no-pad-top taskmain">
+  <div class="container start-splash-container row">
+    <div class="col s12 center-align">
+    <h5 class="createtasks red lighten-4">Create A New Task!</h5>
+      <div class="row">
+          <div class="col s12 main-font">
+              <form action="/tasks" method="POST">
+                <input type="text" id="name" name="task_name" placeholder="A New Task" class="main-font">
+                <button type="submit" class="addTaskButton main-font">Submit</button>
+              </form>
           </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
       </div>
     </div>
   </div>
-</div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<div class="container start-splash-container row">
+  <div class="row">
+    <div class="col s6 tasklist">To Do
+      {{#each task}} {{!--burger--}}
+        {{#unless this.completed}} {{!--devoured--}} 
+          <div>
+            <form action="/tasks/{{this.id}}?_method=PUT" method="POST"> {{!--burgers---}}
+              <button type="submit" class='taskAvailable'> {{this.task_name}}</button>
+            </form>
+          </div>
+        {{/unless}}
+      {{/each}}
+    </div>
+
+    <div class="col s6 tasklist"> Completed!
+      {{#each task}} {{!--burger---}}
+        {{#if this.completed}} {{!--devoured---}}
+          <div class='taskCompleted'>
+            <div>
+              {{this.task_name}} {{!--burger_name---}}
+            </div>
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>
+</main>

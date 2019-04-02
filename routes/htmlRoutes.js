@@ -1,4 +1,4 @@
-var db = require("../models");
+// var db = require("../models");
 
 module.exports = function(app){
     app.get("/", function(req,res){
@@ -32,6 +32,10 @@ module.exports = function(app){
         }else {
             res.redirect()
         }
+    })
+
+    app.get("/justin-test", function(req, res) {
+      res.render("createtasks", {});
     })
 };
 
@@ -70,3 +74,4 @@ module.exports = function(app) {
     res.render("404");
   });
 };
+*/

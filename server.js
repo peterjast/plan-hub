@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 3000;
 var db = require("./models");
 
 //passing passport for configuration file
-require("./config/passport")(passport);
+// require("./config/passport")(passport);
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
