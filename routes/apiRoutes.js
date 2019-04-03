@@ -35,7 +35,7 @@ module.exports = function(app) {
     });
   });
 
-  // Delete an example by id
+  // Delete a todoby id
   app.delete("/api/todo/:id", function(req, res) {
     db.User.destroy({ where: { id: req.params.id } }).then(function(dbTodo) {
       res.json(dbTodo);
@@ -59,7 +59,7 @@ module.exports = function(app) {
       res.json(dbTodos);
     });
   });
-
+//
   app.put("api/todo/:id", function(req, res) {
     db.Todo.findByPk(req.params.id).then(function(todo) {
       todo.completed = req.body;
