@@ -1,4 +1,5 @@
 require("dotenv").config();
+//Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
@@ -33,7 +34,7 @@ app.use(
 );
 
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session()); // persistent login sessions
 app.use(flash());
 
 // Handlebars
@@ -47,7 +48,10 @@ app.set("view engine", "handlebars");
 
 // Routes
 require("./routes/apiRoutes")(app, passport);
-require("./routes/htmlRoutes")(app, passport);
+require("./controllers/html-routes")(app, passport);
+require("./controllers/createtasks-controller")(app, passport);
+require("./controllers/todo-controller")(app, passport);
+require("./controllers/user-controller")(app, passport);
 
 var syncOptions = { force: false };
 
