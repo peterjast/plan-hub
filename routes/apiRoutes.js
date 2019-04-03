@@ -5,12 +5,26 @@ module.exports = function(app) {
 
   //Create a new user on the signup screen
   app.post("/api/user", function(req, res) {
-    db.User.create(req.body).then(function(dbUser) {
-      res.json(dbUser);
+    var query = { email: req.body.email };
+    db.User.findOne({ where: query }).then(function(user, err) {
+      if (err) {
+        console.log("Error! " + err);
+        return;
+      }
+      if (user) {
+        console.log("Email already exists!");
+        res.json({ error: "Email already exists!" });
+      } else {
+        db.User.create({
+          name: req.body.username,
+          email: req.body.email,
+          password: db.User.generateHash(req.body.password)
+        }).then(function(dbUser) {
+          res.json(dbUser);
+        });
+      }
     });
   });
-
-  
 
   // Create routing for the parents page
 

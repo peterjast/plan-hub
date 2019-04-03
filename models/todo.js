@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Todo.associate = function(models) {
-    // We're saying that a Post should belong to an Author
+    // We're saying that a todo should belong to a user
     // A task can't be created without a user due to the foreign key constraint
     Todo.belongsTo(models.User, {
       foreignKey: {
