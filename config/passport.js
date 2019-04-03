@@ -17,11 +17,8 @@ module.exports = function(passport) {
     });
   });
 
-  //Register for an account
-  passport.use(
-    "local-signup",
-    new LocalStrategy(
-      {
+    //Register for an user
+    passport.use("local-signup", new LocalStrategy({
         usernameField: "username",
         emailField: "email",
         passwordField: "password",
