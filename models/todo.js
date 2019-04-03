@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes){
   });
 
   ToDo.associate = function(models) {
-      ToDo.belongsTo(models.Accounts, {
+      ToDo.belongsTo(models.User, {
           foreignKey: "owner_id" //update
       });
   };

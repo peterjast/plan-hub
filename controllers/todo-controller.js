@@ -3,9 +3,8 @@ var db = require("../models");
 var passport = require("passport");
 
 module.exports = function(app) {
-
   app.get("/home", function (req, res) {
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated()) {
       db.ToDo.findAll({}).then(function (dbToDo) {
         console.log("dbToDo", dbToDo);
 
@@ -21,13 +20,10 @@ module.exports = function(app) {
 
         res.render("home", hbsObj);
       });
-    }
-    else{
+    } else {
       res.redirect("/");
     }
   });
-  });
-;
-
+};
 
 //add logic to sort completes vs dbToDo
