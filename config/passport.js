@@ -17,7 +17,7 @@ module.exports = function(passport) {
 	    });
     });
 
-    //Register for an account
+    //Register for an user
     passport.use("local-signup", new LocalStrategy({
         usernameField: "username",
         emailField: "email",
@@ -42,7 +42,7 @@ module.exports = function(passport) {
                 db.Accounts.create({
                 username: req.body.username,    
 			    email: req.body.email,
-			    account_key: db.Accounts.generateHash(account_key)
+			    account_key: db.users.generateHash(account_key)
 
 						    }).then(function(dbUser) {
 						    		      
@@ -54,12 +54,12 @@ module.exports = function(passport) {
         });
     }));
 
-    //log in to your account
+    //log in to your
     passport.use("local-login", new LocalStrategy({
             usernameField: "username",
             passwordField : "account_key",
             passReqToCallback : true 
-        }, 
+    }, 
     function(req, username, account_key, done) { 
             db.Accounts.findOne({
                 where: {

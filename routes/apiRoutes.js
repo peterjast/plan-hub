@@ -1,4 +1,4 @@
-var db = require("../models");
+/*var db = require("../models");
 
 module.exports = function(app) {
   //Create routing for the login-create username

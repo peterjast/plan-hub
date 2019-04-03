@@ -1,17 +1,24 @@
-module.exports = function(sequelize, DataTypes) {
-  var Todo = sequelize.define("Todo", {
-    task: DataTypes.STRING,
-    completed: DataTypes.BOOLEAN
+module.exports = function(sequelize, DataTypes){
+  var ToDo = sequelize.define("ToDo",{
+      task: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          validate:{
+              len:[1,255]
+          }
+      },
+      completed: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: false
+      }
+
   });
 
-  Todo.associate = function(models) {
-    // We're saying that a Post should belong to an Author
-    // A task can't be created without a user due to the foreign key constraint
-    Todo.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-  return Todo;
+  ToDo.associate = function(models){
+      ToDo.belongsTo(models.Accounts, {
+          foreignKey: "owner_id" //update
+      });
+  
+      
+  return ToDo;
 };
