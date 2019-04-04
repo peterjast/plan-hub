@@ -69,7 +69,7 @@ module.exports = function(passport) {
       function(req, email, password, done) {
         db.User.findOne({
           where: {
-            username: req.body.email
+            email: email
           }
         }).then(function(user, err) {
           if (!user) {
@@ -82,8 +82,7 @@ module.exports = function(passport) {
                 "It looks like that email doesn't exist!"
               )
             );
-          }
-          if (user && !user.validPassword(req.body.password)) {
+          } else if (!user.validPassword(password)) {
             return done(
               null,
               false,
