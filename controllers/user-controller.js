@@ -56,7 +56,7 @@ module.exports = function (app) {
     //=======================================================================
     
       app.post('/register', function(req, res, next) {
-        passport.authenticate('local-signup', function(err, user, info) {
+        passport.authorize('local-signup', function(err, user, info) {
           console.log("info", info);
           if (err) {
             console.log("passport err", err);
@@ -130,7 +130,7 @@ module.exports = function (app) {
             //     next();
             // }
             // console.log("=====================signup: ",req.headers.referer);
-            return res.json(true);
+            return res.redirect("/");
             // return res.redirect("/account");
             
           });      

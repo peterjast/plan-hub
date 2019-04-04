@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
 
   User.associate = function(models) {
     User.hasMany(models.ToDo, {
-      foreignKey: "owner_id", //update
+      as: "owner", //update
       onDelete: "cascade"
     });
   };

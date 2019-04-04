@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col s12">
-    <form action="/tasks" method="POST">
+    <form action="/task" method="POST">
       <input type="text" id="name" name="task_name" placeholder="A New Task">
       <button type="submit" class="addTask">Add The Task</button>
     </form>
@@ -17,7 +17,7 @@
         {{#each tasks}}
           {{#unless this.completed}}
             <div>
-              <form action="/tasks/{{this.id}}?_method=PUT" method="POST">
+              <form action="/task/{{this.id}}?_method=PUT" method="POST">
                 <button type="submit" class='newTask'> {{this.task_name}}</button>
               </form>
             </div>
