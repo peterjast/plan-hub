@@ -6,12 +6,12 @@ module.exports = function(sequelize, DataTypes) {
     uuid: {
       primaryKey: true,
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
-      isUnique: true
+      defaultValue: DataTypes.UUIDV1
     },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         len: [1, 30]
       }
@@ -19,6 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         len: [1, 100]
       }

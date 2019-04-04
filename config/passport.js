@@ -19,8 +19,7 @@ module.exports = function(passport) {
 
     //Register for an user
     passport.use("local-signup", new LocalStrategy({
-        usernameField: "username",
-        emailField: "email",
+        usernameField: "email",
         passwordField: "password",
         passReqToCallback: true
       },
@@ -36,18 +35,8 @@ module.exports = function(passport) {
               return done(err);
             }
             if (user) {
-              console.log(
-                "signupMessage",
-                "Sorry... that username is already taken."
-              );
-              return done(
-                null,
-                false,
-                req.flash(
-                  "signupMessage",
-                  "Sorry... that username is already taken."
-                )
-              );
+              console.log("username " + email + " is already taken.");
+              return done(null, false, { message: "Sorry, that username is taken." });
             } else {
               db.User.create({
                 username: req.body.username,
@@ -59,6 +48,7 @@ module.exports = function(passport) {
                 })
                 .catch(function(err) {
                   console.log(err);
+                  return done(err);
                 });
             }
           });
