@@ -12,32 +12,32 @@ module.exports = function (app) {
         res.render("login");
     });
 
-    app.get("/home", function (req, res) {
-        console.log("%%%%%%%%% is logged in", req.isAuthenticated());
+    // app.get("/home", function (req, res) {
+    //     console.log("%%%%%%%%% is logged in", req.isAuthenticated());
        
-        if(req.isAuthenticated()){
+    //     if(req.isAuthenticated()){
          
-          db.Accounts.findOne({
-            where:{
-              uuid: req.session.passport.user
-            }
-          }).then(function(dbUser){
-            var user = {
-              userInfo: dbUser.dataValues,
-              id: req.session.passport.user,
-              isloggedin: req.isAuthenticated()
-            }
-            res.render("home", user);
-          })
-        }
-        else {
-          var user = {
-              id: null,
-              isloggedin: req.isAuthenticated()
-            }
-          res.redirect("/");
-        }
-    });
+    //       db.Accounts.findOne({
+    //         where:{
+    //           uuid: req.session.passport.user
+    //         }
+    //       }).then(function(dbUser){
+    //         var user = {
+    //           userInfo: dbUser.dataValues,
+    //           id: req.session.passport.user,
+    //           isloggedin: req.isAuthenticated()
+    //         }
+    //         res.render("home", user);
+    //       })
+    //     }
+    //     else {
+    //       var user = {
+    //           id: null,
+    //           isloggedin: req.isAuthenticated()
+    //         }
+    //       res.redirect("/");
+    //     }
+    // });
 
         // logout of user account
         app.get('/logout', function(req, res) {
@@ -56,7 +56,7 @@ module.exports = function (app) {
     //=======================================================================
     
       app.post('/register', function(req, res, next) {
-        passport.authenticate('local-signup', function(err, user, info) {
+        passport.authorize('local-signup', function(err, user, info) {
           console.log("info", info);
           if (err) {
             console.log("passport err", err);
@@ -130,7 +130,7 @@ module.exports = function (app) {
             //     next();
             // }
             // console.log("=====================signup: ",req.headers.referer);
-            return res.json(true);
+            return res.redirect("/");
             // return res.redirect("/account");
             
           });      

@@ -7,12 +7,12 @@
         <p>
             Register here to get started!
         </p>
-        <form>
+        <form method="POST" action="/register">
             <div class="input">
                 <div class="input-addon">
                     <i class="material-icons">email</i>
                 </div>
-                <input id="email" placeholder="Email" type="email" required class="validate" autocomplete="off">
+                <input id="email" name="email" placeholder="Email" type="email" required class="validate" autocomplete="off">
             </div>
 
             <div class="clearfix"></div>
@@ -21,7 +21,7 @@
                 <div class="input-addon">
                     <i class="material-icons">face</i>
                 </div>
-                <input id="username" placeholder="Username" type="text" required class="validate" autocomplete="off">
+                <input id="username" name="username" placeholder="Username" type="text" required class="validate" autocomplete="off">
             </div>
 
             <div class="clearfix"></div>
@@ -30,7 +30,7 @@
                 <div class="input-addon">
                     <i class="material-icons">vpn_key</i>
                 </div>
-                <input id="password" placeholder="Password" type="password" required class="validate"
+                <input id="password" name="password" placeholder="Password" type="password" required class="validate"
                     autocomplete="off">
             </div>
 
@@ -48,7 +48,7 @@
 
         <div class="register">
             <span style="color: #657575">Already have an account?</span>
-            <a href="login.html"><button id="register-link">Log In here</button></a>
+            <a href="login"><button id="register-link">Log In here</button></a>
         </div>
         <div class="footer">
             <p>Project by <a href="" target='_blank'>Peter Jast</a>, <a href="" target='_blank'>Sonja Rasmussen</a>, <a

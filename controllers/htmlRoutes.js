@@ -11,13 +11,13 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/home", function(req, res) {
-    if (req.isAuthenticated()) {
-      res.redirect("home");
-    } else {
-      res.render("login");
-    }
-  });
+  // app.get("/home", function(req, res) {
+  //   if (req.isAuthenticated()) {
+  //     res.redirect("home");
+  //   } else {
+  //     res.render("login");
+  //   }
+  // });
 
   app.get("/createtasks", function(req, res) {
     if (req.isAuthenticated()) {

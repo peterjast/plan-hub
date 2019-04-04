@@ -24,6 +24,21 @@ module.exports = function(app) {
       res.redirect("/");
     }
   });
+
+  app.post("/task", function(req, res) {
+    if (req.isAuthenticated()) {
+      console.log("Creating todo");
+      db.ToDo.create({
+        task: req.body.task_name,
+        completed: false,
+        owner: req.user
+      }).then(function(dbTodo) {
+        res.redirect("/");
+      });
+    } else {
+      res.redirect("/login");
+    }
+  });
 };
 
 //add logic to sort completes vs dbToDo
