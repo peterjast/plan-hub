@@ -12,33 +12,6 @@ module.exports = function (app) {
         res.render("login");
     });
 
-    // app.get("/home", function (req, res) {
-    //     console.log("%%%%%%%%% is logged in", req.isAuthenticated());
-       
-    //     if(req.isAuthenticated()){
-         
-    //       db.Accounts.findOne({
-    //         where:{
-    //           uuid: req.session.passport.user
-    //         }
-    //       }).then(function(dbUser){
-    //         var user = {
-    //           userInfo: dbUser.dataValues,
-    //           id: req.session.passport.user,
-    //           isloggedin: req.isAuthenticated()
-    //         }
-    //         res.render("home", user);
-    //       })
-    //     }
-    //     else {
-    //       var user = {
-    //           id: null,
-    //           isloggedin: req.isAuthenticated()
-    //         }
-    //       res.redirect("/");
-    //     }
-    // });
-
         // logout of user account
         app.get('/logout', function(req, res) {
             req.session.destroy(function(err){
@@ -85,7 +58,7 @@ module.exports = function (app) {
             
             res.cookie('username', user.username);
             res.cookie('user_id', user.uuid );
-            return res.redirect("/home");
+            return res.redirect("/");
           });      
         })(req, res, next);
       });

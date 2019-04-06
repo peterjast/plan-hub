@@ -3,7 +3,7 @@ var db = require("../models");
 var passport = require("passport");
 
 module.exports = function(app) {
-  app.get("/home", function (req, res) {
+  app.get("/", function(req, res) {
     if (req.isAuthenticated()) {
       db.ToDo.findAll({}).then(function (dbToDo) {
         console.log("dbToDo", dbToDo);
