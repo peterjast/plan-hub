@@ -30,6 +30,19 @@ module.exports = function(app) {
     }
   });
 
+  app.post("/task-complete/:id", function(req, res) {
+    if (req.isAuthenticated()) {
+      db.ToDo.findByPk(req.params.id)
+        .then(function(dbTodo) {
+          dbTodo.completed = true;
+          dbTodo.save();
+        })
+        .then(function() {
+          res.redirect("/");
+        });
+    }
+  });
+
   app.post("/task", function(req, res) {
     if (req.isAuthenticated()) {
       console.log("Creating todo");
