@@ -28,6 +28,22 @@
         <div class="col s6 tasklist">Completed!</div>
       </div>
     </div>
+    <div class="row">
+      <div class="col s6 tasklist">
+        <ul id="todo_list">
+        {{#each todos}}
+          <li><form method="post" action="/task-complete/{{id}}"><button type="submit">Complete</button>{{task}}</form></li>
+        {{/each}}
+        </ul>
+      </div>
+      <div class="col s6 tasklist">
+        <ul id="completed_list">
+        {{#each completed}}
+          <li>{{task}}</li>
+        {{/each}}
+        </ul>
+      </div>
+    </div>
   </div>
   
   <div class="container start-splash-container row">
