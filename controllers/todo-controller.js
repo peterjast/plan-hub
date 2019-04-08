@@ -29,7 +29,7 @@ module.exports = function(app) {
       res.redirect("/login");
     }
   });
-
+  //mark a task complete
   app.post("/task-complete/:id", function(req, res) {
     if (req.isAuthenticated()) {
       db.ToDo.findByPk(req.params.id)
@@ -42,7 +42,20 @@ module.exports = function(app) {
         });
     }
   });
-
+  //mark a task complete
+  app.post("/task-undo/:id", function(req, res) {
+    if (req.isAuthenticated()) {
+      db.ToDo.findByPk(req.params.id)
+        .then(function(dbTodo) {
+          dbTodo.completed = false;
+          dbTodo.save();
+        })
+        .then(function() {
+          res.redirect("/");
+        });
+    }
+  });
+  //Add a task
   app.post("/task", function(req, res) {
     if (req.isAuthenticated()) {
       console.log("Creating todo");
@@ -57,6 +70,20 @@ module.exports = function(app) {
       res.redirect("/login");
     }
   });
-};
 
-//add logic to sort completes vs dbToDo
+  //Delete a Task
+  app.post("/task-delete/:id", function(req, res) {
+    if (req.isAuthenticated()) {
+      console.log("Deleting a task");
+      db.ToDo.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(dbTodo) {
+        res.redirect("/");
+      });
+    } else {
+      res.redirect("/login");
+    }
+  });
+};

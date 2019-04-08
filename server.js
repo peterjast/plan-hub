@@ -47,7 +47,6 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/apiRoutes")(app, passport);
 require("./controllers/htmlRoutes")(app, passport);
 require("./controllers/createtasks-controller")(app, passport);
 require("./controllers/todo-controller")(app, passport);

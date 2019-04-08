@@ -33,14 +33,18 @@
       <div class="col s6 tasklist">
         <ul id="todo_list">
         {{#each todos}}
-          <li><form method="post" action="/task-complete/{{id}}"><button type="submit">Complete</button>{{task}}</form></li>
+          <li><form method="post" action="/task-complete/{{id}}">{{task}}
+          <button type="submit">Complete</button></form>
+          <form method="post" action="/task-delete/{{id}}">
+          <button type="submit">Delete</button></form></li>
         {{/each}}
         </ul>
       </div>
       <div class="col s6 tasklist">
         <ul id="completed_list">
         {{#each completed}}
-          <li>{{task}}</li>
+          <li><form method="post" action="/task-undo/{{id}}"> {{task}}
+          <button type="submit"> Whoops</button></form></li>
         {{/each}}
         </ul>
       </div>
