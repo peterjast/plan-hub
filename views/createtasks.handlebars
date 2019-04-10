@@ -1,10 +1,14 @@
-<h3>Create a New Task</h3>
+<div class="container start-splash-container row">
+  <div class="createtasks">Parents! Create a New Task for your kids!
+  </div>
+
+</div>
 
 <div class="row">
   <div class="col s12">
     <form action="/task" method="POST">
-      <input type="text" id="name" name="task_name" placeholder="A New Task">
-      <button type="submit" class="addTask">Add The Task</button>
+      <input type="text" class="main-font" name="task_name" placeholder="A New Task">
+      <button type="submit" class="addTaskButton">Add The Task</button>
     </form>
   </div>
 </div>
@@ -37,4 +41,22 @@
       </div>
     </div>
   </div>
+
+<div class="container start-splash-container row">
+  <div class="row">
+    <div class="col s12 tasklist">
+      <ul id="todo_list">
+        <div class="taskstocomplete">Getchya child to complete this shit</div>
+      {{#each todos}}
+        <div id="container-button">
+        <li><form method="post" action="/task-complete/{{id}}">{{task}}
+        <br>
+        <form method="post" action="/task-delete/{{id}}">
+        <button type="submit" class="buttons">Delete</button></form></li>
+        </div>
+      {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
 </main>

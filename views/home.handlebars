@@ -1,14 +1,13 @@
 <main class="no-padding no-pad-top taskmain">
 
   <div class="container start-splash-container row">
+    <div class="topheader-dash red lighten-4">Kids! Show your parents what you finished!</div>
+
+
     <div class="row">
-        <div class="col s6 tasklist">To Do</div>
-        <div class="col s6 tasklist">Completed!</div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s6 tasklist">
+      <div class="col s12 m5 l5 tasklist-todo">
         <ul id="todo_list">
+          <div class="taskheaders">TO DO</div>
         {{#each todos}}
           <div id="container-button">
           <li><form method="post" action="/task-complete/{{id}}">{{task}}
@@ -20,17 +19,19 @@
         {{/each}}
         </ul>
       </div>
-      <div class="col s6 tasklist">
+      <div class="col s0 m2 l2"></div>
+      <div class="col s12 m5 l5 tasklist-completed">
         <ul id="completed_list">
+          <div class="taskheaders">COMPLETED</div>
         {{#each completed}}
-          <li><form method="post" action="/task-undo/{{id}}"> {{task}}
+          <li><form method="post" action="/task-undo/{{id}}"> {{task}}<br>
           <button type="submit" class="buttons"> Whoops</button></form></li>
         {{/each}}
         </ul>
       </div>
     </div>
   </div>
-  <br><br><br>
+  <br>
   <div class="container start-splash-container row">
     <div class="col s12 center-align">
       <h5 class="createtasks red lighten-4">Complete 6 tasks and choose from these great prizes!</h5>
