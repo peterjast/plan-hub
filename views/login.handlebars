@@ -11,6 +11,14 @@
             We encourage you to sign up below and give it a try!
         </p>
 
+        {{#if errors}}
+        <div>
+            {{#each errors}}
+                <div>{{this}}</div>
+            {{/each}}
+        </div>
+        {{/if}}
+
         <form method="POST" action="/login">
             <div class="input">
                 <div class="input-addon">
