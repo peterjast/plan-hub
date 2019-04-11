@@ -38,6 +38,10 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: "ownerUuid",
       onDelete: "cascade"
     });
+    User.hasMany(models.Reward, {
+      foreignKey: "ownerUuid",
+      onDelete: "cascade"
+    });
   };
 
   // methods ======================

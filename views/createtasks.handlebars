@@ -64,6 +64,47 @@
 </div>
 </main>
 
+<h3>Create a New Reward</h3>
+
+<div class="row">
+  <div class="col s12">
+    <form action="/item" method="POST">
+      <input type="text" id="name" name="item_name" placeholder="A New Reward">
+      <button type="submit" class="addReward">Add The Reward</button>
+    </form>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col s6">
+        {{#each rewards}}
+          {{#unless this.chosen}}
+            <div>
+              <form action="/item/{{this.id}}?_method=PUT" method="POST">
+                <button type="submit" class='newReward'> {{this.reward_name}}</button>
+              </form>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+
+      <div class="col s6">
+        {{#each reward}}
+          {{#if this.chosen}}
+            <div class='rewardChosen'>
+              <div>
+                {{this.reward_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</main>
+
 <script>
  $(() => {
    $('.delete-form').on("submit", function(e) {
@@ -77,6 +118,4 @@
 
   });
  })
-  
-
 </script>

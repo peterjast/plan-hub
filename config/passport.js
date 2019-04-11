@@ -17,8 +17,11 @@ module.exports = function(passport) {
     });
   });
 
-    //Register for an user
-    passport.use("local-signup", new LocalStrategy({
+  //Register for an user
+  passport.use(
+    "local-signup",
+    new LocalStrategy(
+      {
         usernameField: "email",
         passwordField: "password",
         passReqToCallback: true
@@ -36,7 +39,9 @@ module.exports = function(passport) {
             }
             if (user) {
               console.log("email " + email + " is already taken.");
-              return done(null, false, { message: "Sorry, that email is taken." });
+              return done(null, false, {
+                message: "Sorry, that email is taken."
+              });
             } else {
               db.User.create({
                 username: req.body.username,
@@ -71,16 +76,20 @@ module.exports = function(passport) {
           where: {
             email: email
           }
-        }).then(function(user) {
-          if (!user) {
-            return done(null, false, { message: "It looks like that email doesn't exist!"});
-          } else if (!user.validPassword(password)) {
-            return done(null, false, { message: "Oops! Wrong password."});
-          }
-          return done(null, user);
-        }).catch(function(err) {
-          return done(err);
-        });
+        })
+          .then(function(user) {
+            if (!user) {
+              return done(null, false, {
+                message: "It looks like that email doesn't exist!"
+              });
+            } else if (!user.validPassword(password)) {
+              return done(null, false, { message: "Oops! Wrong password." });
+            }
+            return done(null, user);
+          })
+          .catch(function(err) {
+            return done(err);
+          });
       }
     )
   );

@@ -51,6 +51,7 @@ require("./controllers/htmlRoutes")(app, passport);
 require("./controllers/createtasks-controller")(app, passport);
 require("./controllers/todo-controller")(app, passport);
 require("./controllers/user-controller")(app, passport);
+require("./controllers/reward-controller")(app, passport);
 
 var syncOptions = { force: false };
 
