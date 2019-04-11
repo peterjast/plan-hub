@@ -49,10 +49,13 @@
         <div class="taskstocomplete">Getchya child to complete this shit</div>
       {{#each todos}}
         <div id="container-button">
-        <li><form method="post" action="/task-complete/{{id}}">{{task}}
-        <br>
-        <form method="post" action="/task-delete/{{id}}">
-        <button type="submit" class="buttons">Delete</button></form></li>
+          <li>
+            {{task}}
+            <br>
+            <form method="post" action="/task-delete/{{id}}" data-id="{{id}}" class='delete-form'>
+              <button type="submit" class="buttons">Delete</button>
+            </form>
+          </li>
         </div>
       {{/each}}
       </ul>
@@ -60,3 +63,20 @@
   </div>
 </div>
 </main>
+
+<script>
+ $(() => {
+   $('.delete-form').on("submit", function(e) {
+    e.preventDefault();
+
+    let id = $(this).data('id');
+
+    $.post('/task-delete/' + id, function(response) {
+      window.location.reload();
+    });
+
+  });
+ })
+  
+
+</script>
