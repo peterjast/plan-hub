@@ -1,16 +1,23 @@
 module.exports = function(sequelize, DataTypes) {
   var Reward = sequelize.define("Reward", {
-    item: DataTypes.STRING
+    item: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 255]
+      }
+    },
+    chosen: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   });
 
   Reward.associate = function(models) {
-    // We're saying that a reward should belong to a registered user
-    // A task can't be created without a user due to the foreign key constraint
     Reward.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
+      foreignKey: "ownerUuid"
     });
   };
+
   return Reward;
 };

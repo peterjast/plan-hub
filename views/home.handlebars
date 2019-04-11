@@ -35,7 +35,29 @@
   <div class="container start-splash-container row">
     <div class="col s12 center-align">
       <h5 class="createtasks red lighten-4">Complete 6 tasks and choose from these great prizes!</h5>
+       
         <div class="row">
+      <div class="col s6 tasklist">
+        <ul id="reward_list">
+        {{#each rewards}}
+          <li><form method="post" action="/item-chosen/{{id}}">{{item}}
+          <button type="submit">Pick Me</button></form>
+          <form method="post" action="/item-delete/{{id}}">
+          <button type="submit">Delete</button></form></li>
+        {{/each}}
+        </ul>
+      </div>
+      <div class="col s6 tasklist">
+        <ul id="chosen_list">
+        {{#each chosen}}
+          <li><form method="post" action="/item-undo/{{id}}"> {{item}}
+          <button type="submit"> Put it back</button></form></li>
+        {{/each}}
+        </ul>
+      </div>
+    </div>
+       
+      <!-- <div class="row">
           <div class="col m4 s12 prizes">
             Bowl of Ice Cream
           </div>
@@ -56,7 +78,7 @@
           <div class="col m4 s12 prizes">
             Sit outside and play with sticks
           </div>
-        </div>
+        </div>-->
     </div>
   </div>
     

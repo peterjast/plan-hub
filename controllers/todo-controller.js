@@ -4,16 +4,19 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     if (req.isAuthenticated()) {
       db.User.findByPk(req.user.uuid).then(function(dbUser) {
+        var hbsObj = {
+          todos: [],
+          completed: [],
+          rewards: [],
+          chosen: [],
+          user: req.user,
+          id: req.session.passport.user,
+          isloggedin: req.isAuthenticated()
+        };
+
         dbUser.getToDos().then(function(dbToDo) {
           // console.log("dbToDo", dbToDo);
 
-          var hbsObj = {
-            todos: [],
-            completed: [],
-            user: req.user,
-            id: req.session.passport.user,
-            isloggedin: req.isAuthenticated()
-          };
           dbToDo.forEach(function(task) {
             if (task.completed) {
               hbsObj.completed.push(task.dataValues);
@@ -22,7 +25,18 @@ module.exports = function(app) {
             }
           });
 
-          res.render("home", hbsObj); //if i make this createtasks, the items appear on the page but dashboard won't load
+          dbUser.getRewards().then(function(dbRewards) {
+            console.log("Rewards: ", dbRewards);
+            dbRewards.forEach(function(reward) {
+              if (reward.chosen) {
+                hbsObj.chosen.push(reward.dataValues);
+              } else {
+                hbsObj.rewards.push(reward.dataValues);
+              }
+            });
+
+            res.render("home", hbsObj);
+          });
         });
       });
     } else {
@@ -64,6 +78,7 @@ module.exports = function(app) {
         completed: false,
         ownerUuid: req.user.uuid
       }).then(function(dbTodo) {
+        res.redirect("/createtasks");
         // res.redirect("/"); /* blocked out to prevent adding task to direct to dashboard*/
       });
     } else {
