@@ -64,6 +64,7 @@ module.exports = function(app) {
         completed: false,
         ownerUuid: req.user.uuid
       }).then(function(dbTodo) {
+        res.redirect("/createtasks");
         // res.redirect("/"); /* blocked out to prevent adding task to direct to dashboard*/
       });
     } else {
