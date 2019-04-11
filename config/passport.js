@@ -35,8 +35,8 @@ module.exports = function(passport) {
               return done(err);
             }
             if (user) {
-              console.log("username " + email + " is already taken.");
-              return done(null, false, { message: "Sorry, that username is taken." });
+              console.log("email " + email + " is already taken.");
+              return done(null, false, { message: "Sorry, that email is taken." });
             } else {
               db.User.create({
                 username: req.body.username,
@@ -71,25 +71,15 @@ module.exports = function(passport) {
           where: {
             email: email
           }
-        }).then(function(user, err) {
+        }).then(function(user) {
           if (!user) {
-            console.log("no user found");
-            return done(
-              null,
-              false,
-              req.flash(
-                "loginMessage",
-                "It looks like that email doesn't exist!"
-              )
-            );
+            return done(null, false, { message: "It looks like that email doesn't exist!"});
           } else if (!user.validPassword(password)) {
-            return done(
-              null,
-              false,
-              req.flash("loginMessage", "Oops! Wrong password.")
-            );
+            return done(null, false, { message: "Oops! Wrong password."});
           }
           return done(null, user);
+        }).catch(function(err) {
+          return done(err);
         });
       }
     )

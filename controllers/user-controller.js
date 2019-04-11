@@ -5,11 +5,15 @@ var passport = require('passport');
 module.exports = function (app) {
 
     app.get("/register", function (req, res) {
-        res.render("register");
+      var context = { errors: req.flash('error') };
+      console.log('Context: ', context);
+        res.render("register", context);
     });
 
     app.get("/login", function (req, res) {
-        res.render("login");
+      var context = { errors: req.flash('error') };
+      console.log('Context: ', context);
+        res.render("login", context);
     });
 
         // logout of user account
@@ -35,10 +39,11 @@ module.exports = function (app) {
             console.log("passport err", err);
             return next(err); // will generate a 500 error
           }
-          // Generate a JSON response reflecting authentication status
-          if (! user) {
+          // Generate an error message on the registration page when a user tries to use an email address that's already in the database
+          if (!user) {
             console.log("user error", user);
-            return res.send({ success : false, message : 'authentication failed' });
+            req.flash('error', info.message);
+            return res.redirect("/register");
           }
           
           // ***********************************************************************
@@ -66,15 +71,16 @@ module.exports = function (app) {
       app.post('/login', function(req, res, next) {
         passport.authenticate('local-login', function(err, user, info) {
           console.log("\n\n\n########userrrr", user)
+          console.log("Info: ", info);
           if (err) {
             console.log("passport err", err);
             return next(err); // will generate a 500 error
           }
-          // Generate a JSON response reflecting authentication status
+          // Generate an error message when user logs in with the wrong email address or password
     
           if (!user) {
-    
-            return res.send({ success : false, message : 'authentication failed'});
+            req.flash('error', info.message);
+            return res.redirect("/login");
           }
           
           // ***********************************************************************

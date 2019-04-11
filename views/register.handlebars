@@ -7,6 +7,15 @@
         <p>
             Register here to get started!
         </p>
+
+        {{#if errors}}
+        <div>
+            {{#each errors}}
+                <div>{{this}}</div>
+            {{/each}}
+        </div>
+        {{/if}}
+
         <form method="POST" action="/register">
             <div class="input">
                 <div class="input-addon">
