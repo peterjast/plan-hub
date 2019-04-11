@@ -1,7 +1,5 @@
 <div class="container start-splash-container row">
-  <div class="createtasks">Parents! Create a New Task for your kids!
-  </div>
-
+  <div class="createtasks">Parents! Create a New Task for your kids!</div>
 </div>
 
 <div class="row">
@@ -16,61 +14,41 @@
 <main>
   <div class="container">
     <div class="row">
-      <div class="col s6">
-        {{#each tasks}}
-          {{#unless this.completed}}
-            <div>
-              <form action="/task/{{this.id}}?_method=PUT" method="POST">
-                <button type="submit" class='newTask'> {{this.task_name}}</button>
-              </form>
-            </div>
-          {{/unless}}
+      <div class="col s12 m5 l5 tasklist-todo">
+        <ul id="todo_list">
+          <div class="taskstocomplete">Getchya child to complete this shit</div>
+        {{#each todos}}
+          <div id="container-button">
+          <li>{{task}}
+          <form method="post" action="/task-delete/{{id}}">
+          <button type="submit" class="buttons">Delete</button></form></li>
+          </div>
         {{/each}}
+        </ul>
       </div>
-
-      <div class="col s6">
-        {{#each tasks}}
-          {{#if this.completed}}
-            <div class='taskCompleted'>
-              <div>
-                {{this.task_name}}
-              </div>
-            </div>
-          {{/if}}
+      <div class="col s0 m2 l2"></div>
+      <div class="col s12 m5 l5 tasklist-completed">
+        <ul id="completed_list">
+          <div class="taskheaders">COMPLETED</div>
+        {{#each completed}}
+          <li><form method="post" action="/task-undo/{{id}}"> {{task}}<br>
+          <button type="submit" class="buttons"> Whoops</button></form></li>
         {{/each}}
+        </ul>
       </div>
     </div>
   </div>
-
-<div class="container start-splash-container row">
-  <div class="row">
-    <div class="col s12 tasklist">
-      <ul id="todo_list">
-        <div class="taskstocomplete">Getchya child to complete this shit</div>
-      {{#each todos}}
-        <div id="container-button">
-          <li>
-            {{task}}
-            <br>
-            <form method="post" action="/task-delete/{{id}}" data-id="{{id}}" class='delete-form'>
-              <button type="submit" class="buttons">Delete</button>
-            </form>
-          </li>
-        </div>
-      {{/each}}
-      </ul>
-    </div>
-  </div>
-</div>
 </main>
 
-<h3>Create a New Reward</h3>
+<div class="container start-splash-container row">
+  <div class="createtasks">Parents! Create a New Reward for your kids!</div>
+</div>
 
 <div class="row">
   <div class="col s12">
     <form action="/item" method="POST">
-      <input type="text" id="name" name="item_name" placeholder="A New Reward">
-      <button type="submit" class="addReward">Add The Reward</button>
+      <input type="text" class="main-font" name="item_name" placeholder="A New Reward">
+      <button type="submit" class="addTaskButton">Add The Reward</button>
     </form>
   </div>
 </div>
@@ -78,30 +56,28 @@
 <main>
   <div class="container">
     <div class="row">
-      <div class="col s6">
+      <div class="col s12 m5 l5 tasklist-todo">
+        <ul id="todo_list">
+          <div class="rewardstoclaim">Rewards</div>
         {{#each rewards}}
-          {{#unless this.chosen}}
-            <div>
-              <form action="/item/{{this.id}}?_method=PUT" method="POST">
-                <button type="submit" class='newReward'> {{this.reward_name}}</button>
-              </form>
-            </div>
-          {{/unless}}
+          <li>{{item}}
+          <form method="post" action="/item-delete/{{id}}">
+          <button type="submit" class="buttons">Delete</button></form></li>
         {{/each}}
+        </ul>
       </div>
-
-      <div class="col s6">
-        {{#each reward}}
-          {{#if this.chosen}}
-            <div class='rewardChosen'>
-              <div>
-                {{this.reward_name}}
-              </div>
-            </div>
-          {{/if}}
+      <div class="col s12 m5 l5 tasklist-completed">
+        <ul id="complete_list">
+        {{#each chosen}}
+          <li>{{item}}
+            <form method="post" action="/">
+            <button type="submit" class="buttons">Put it back</button></form>
+          </li>
         {{/each}}
+        </ul>
       </div>
     </div>
+
   </div>
 </main>
 

@@ -63,7 +63,7 @@ module.exports = function (app) {
             
             res.cookie('username', user.username);
             res.cookie('user_id', user.uuid );
-            return res.redirect("/");
+            return res.redirect("/createtasks");
           });      
         })(req, res, next);
       });
@@ -109,7 +109,7 @@ module.exports = function (app) {
             //     next();
             // }
             // console.log("=====================signup: ",req.headers.referer);
-            return res.redirect("/");
+            return res.redirect("/createtasks");
             // return res.redirect("/account");
             
           });      

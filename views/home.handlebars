@@ -24,8 +24,7 @@
         <ul id="completed_list">
           <div class="taskheaders">COMPLETED</div>
         {{#each completed}}
-          <li><form method="post" action="/task-undo/{{id}}"> {{task}}<br>
-          <button type="submit" class="buttons"> Whoops</button></form></li>
+          <li>{{task}}</li>
         {{/each}}
         </ul>
       </div>
@@ -50,8 +49,7 @@
       <div class="col s6 tasklist">
         <ul id="chosen_list">
         {{#each chosen}}
-          <li><form method="post" action="/item-undo/{{id}}"> {{item}}
-          <button type="submit"> Put it back</button></form></li>
+          <li>{{item}}</li>
         {{/each}}
         </ul>
       </div>
