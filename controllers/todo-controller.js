@@ -5,7 +5,7 @@ module.exports = function(app) {
     if (req.isAuthenticated()) {
       db.User.findByPk(req.user.uuid).then(function(dbUser) {
         dbUser.getToDos().then(function(dbToDo) {
-          console.log("dbToDo", dbToDo);
+          // console.log("dbToDo", dbToDo);
 
           var hbsObj = {
             todos: [],
@@ -22,7 +22,7 @@ module.exports = function(app) {
             }
           });
 
-          res.render("home", hbsObj);
+          res.render("home", hbsObj); //if i make this createtasks, the items appear on the page but dashboard won't load
         });
       });
     } else {
@@ -64,7 +64,7 @@ module.exports = function(app) {
         completed: false,
         ownerUuid: req.user.uuid
       }).then(function(dbTodo) {
-        res.redirect("/");
+        // res.redirect("/"); /* blocked out to prevent adding task to direct to dashboard*/
       });
     } else {
       res.redirect("/login");
@@ -80,7 +80,8 @@ module.exports = function(app) {
           id: req.params.id
         }
       }).then(function(dbTodo) {
-        res.redirect("/");
+        // res.send({});
+        res.end();
       });
     } else {
       res.redirect("/login");

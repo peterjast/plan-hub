@@ -4,6 +4,7 @@
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
 
+ 
  .main-font {
     font-family: 'Gloria Hallelujah';
     color: black;
@@ -12,11 +13,11 @@
  .createtasks {
   font-family: 'Gloria Hallelujah', cursive;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 22px;
   text-align: center;
-
-  border-radius: 25px;
+  border-radius: 15px;
   margin: 10px;
+  margin-top: 25px;
   padding: 10px;
   background-color: #b7ffc2;
   border: solid;
@@ -24,18 +25,52 @@
   border-width: 1px;
 }
 
-.tasklist {
+.topheader-create, .topheader-dash {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: normal;
+  font-size: 22px;
+  text-align: center;
+  border-radius: 15px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #b7ffc2;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+}
+.topheader-create {
+  margin-top: 25px;
+}
+
+.topheader-dash {
+  margin-top: -15px;
+}
+
+
+.tasklist-todo, .tasklist-completed {
   font-family: 'Gloria Hallelujah', cursive;
   font-weight: normal;
   font-size: 18px;
   text-align: center;
-
   border-radius: 15px;
   padding-right: 20px;
   padding-left: 20px;
   background-color: #b7ffc2;
   border-style: solid;
   border-width: 1px;
+}
+
+@media screen and (max-width: 600px) {
+  .tasklist-completed {
+    margin-top: 10px;
+  }
+}
+
+.tasklist-todo {
+}
+
+.tasklist-completed {
+
 }
 
 .taskAvailable {
@@ -62,6 +97,34 @@
   padding-left: 20px;
   background-color: #ffcdd2;
   border: none;
+}
+
+.taskheaders {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 15px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  background-color: #bbdefb;
+  border: solid;
+  border-width: 1px;
+}
+
+.taskstocomplete {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 15px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  background-color: #bbdefb;
+  border: solid;
+  border-width: 1px;
 }
 
 .buttons {
@@ -111,13 +174,12 @@
 .addTaskButton {
   font-family: 'Gloria Hallelujah', cursive;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   border-radius: 25px;
-  width: 30%;
   margin: 0px;
-  padding: 10px;
-  background-color: rgb(248, 221, 170);
+  margin-left: 25%;
+  background-color: #ffcdd2;
   border: solid;
   border-width: 1px;
 }
@@ -4430,7 +4492,7 @@ nav .nav-wrapper {
 nav .sidenav-trigger {
   float: left;
   position: relative;
-  z-index: 1;
+  z-index: 0;
   height: 56px;
   margin: 0 18px;
 }
@@ -7653,7 +7715,8 @@ input[type=range]::-ms-thumb {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #fff;
+  background-color: #fcdcdf;
+  opacity: 50%;
   z-index: 999;
   overflow-y: auto;
   will-change: transform;
@@ -7860,7 +7923,7 @@ input[type=range]::-ms-thumb {
   opacity: 0;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 997;
+  z-index: 0;
   display: none;
 }
 
