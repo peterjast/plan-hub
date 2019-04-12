@@ -68,9 +68,10 @@
       </div>
       <div class="col s12 m5 l5 tasklist-completed">
         <ul id="complete_list">
+          <div class="claimedrewards">Claimed Rewards</div>
         {{#each chosen}}
           <li>{{item}}
-            <form method="post" action="/">
+            <form method="post" action="/item-undo/{{id}}">
             <button type="submit" class="buttons">Put it back</button></form>
           </li>
         {{/each}}

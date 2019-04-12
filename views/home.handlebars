@@ -30,7 +30,30 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <div id="gif-container">
+        <h4>You did it!</h4>
+        <img src="{{gif}}" style="max-width: 90%; max-height: 360px;" />
+        <p>Good job completing all your tasks! <button class="btn" id="choose-reward">Choose a reward!</button></p>
+      </div>
+      <div id="reward-container" class="row" style="display:none">
+        <div class="col s12 tasklist">
+        <ul id="reward_list">
+        {{#each rewards}}
+          <li><form method="post" action="/item-chosen/{{id}}">{{item}}
+          <button type="submit" class="btn modal-close">Pick Me</button></form></li>
+        {{/each}}
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+
   <br>
+  {{!--
   <div class="container start-splash-container row">
     <div class="col s12 center-align">
       <h5 class="createtasks red lighten-4">Complete 6 tasks and choose from these great prizes!</h5>
@@ -79,12 +102,22 @@
         </div>-->
     </div>
   </div>
-    
+    --}}
 </main>
 
 <script type="text/javascript" src="assets/js/materialize.min.js"></script>
   <script>
     $(document).ready(function() {
         $(".sidenav").sidenav();
+        $(".modal").modal();
+        {{#if rewards}}
+        $(".modal").modal('open');
+        {{/if}}
+
+        $("#choose-reward").click(function(e) {
+          e.preventDefault();
+          $("#gif-container").hide();
+          $("#reward-container").show();
+        })
     });
   </script>
