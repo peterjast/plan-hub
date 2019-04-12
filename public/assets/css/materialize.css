@@ -13,13 +13,13 @@
  .createtasks {
   font-family: 'Gloria Hallelujah', cursive;
   font-weight: normal;
-  font-size: 22px;
+  font-size: 24px;
   text-align: center;
   border-radius: 15px;
   margin: 10px;
   margin-top: 25px;
   padding: 10px;
-  background-color: #b7ffc2;
+  background-color: #ffcdd2;
   border: solid;
   border-color: black;
   border-width: 1px;
@@ -56,7 +56,7 @@
   padding-right: 20px;
   padding-left: 20px;
   background-color: #b7ffc2;
-  border-style: solid;
+  border-style: dashed;
   border-width: 1px;
 }
 
@@ -64,13 +64,6 @@
   .tasklist-completed {
     margin-top: 10px;
   }
-}
-
-.tasklist-todo {
-}
-
-.tasklist-completed {
-
 }
 
 .taskAvailable {
@@ -182,6 +175,10 @@
   background-color: #ffcdd2;
   border: solid;
   border-width: 1px;
+}
+
+.arrows {
+  text-align: center;
 }
 
 .materialize-red {
