@@ -1,5 +1,20 @@
 var db = require("../models");
 
+var giphyIds = [
+  "29rsFlMw8wLlxOCPH1",
+  "vxXEa8lfyMyTLC521v",
+  "tsUPewJtdiHEFKxvZ0",
+  "3LKpJDAXQfKgQ3xTPv",
+  "13hxeOYjoTWtK8",
+  "5tsatyYOuAlVKyAqQS",
+  "MRXdvH6gdFPAx22RAv"
+];
+
+function getRandomGif() {
+  var index = Math.floor(Math.random() * giphyIds.length);
+  return "https://media.giphy.com/media/" + giphyIds[index] + "/giphy.gif";
+}
+
 module.exports = function(app) {
   app.get("/", function(req, res) {
     if (req.isAuthenticated()) {
@@ -8,15 +23,13 @@ module.exports = function(app) {
           todos: [],
           completed: [],
           rewards: [],
-          chosen: [],
+          gif: getRandomGif(),
           user: req.user,
           id: req.session.passport.user,
           isloggedin: req.isAuthenticated()
         };
 
         dbUser.getToDos().then(function(dbToDo) {
-          // console.log("dbToDo", dbToDo);
-
           dbToDo.forEach(function(task) {
             if (task.completed) {
               hbsObj.completed.push(task.dataValues);
@@ -25,18 +38,19 @@ module.exports = function(app) {
             }
           });
 
-          dbUser.getRewards().then(function(dbRewards) {
-            console.log("Rewards: ", dbRewards);
-            dbRewards.forEach(function(reward) {
-              if (reward.chosen) {
-                hbsObj.chosen.push(reward.dataValues);
-              } else {
-                hbsObj.rewards.push(reward.dataValues);
-              }
-            });
+          if (hbsObj.completed.length > 0 && hbsObj.todos.length === 0) {
+            dbUser.getRewards().then(function(dbRewards) {
+              dbRewards.forEach(function(reward) {
+                if (!reward.chosen) {
+                  hbsObj.rewards.push(reward.dataValues);
+                }
+              });
 
+              res.render("home", hbsObj);
+            });
+          } else {
             res.render("home", hbsObj);
-          });
+          }
         });
       });
     } else {
@@ -54,52 +68,6 @@ module.exports = function(app) {
         .then(function() {
           res.redirect("/");
         });
-    }
-  });
-  //mark a task complete
-  app.post("/task-undo/:id", function(req, res) {
-    if (req.isAuthenticated()) {
-      db.ToDo.findByPk(req.params.id)
-        .then(function(dbTodo) {
-          dbTodo.completed = false;
-          dbTodo.save();
-        })
-        .then(function() {
-          res.redirect("/");
-        });
-    }
-  });
-  //Add a task
-  app.post("/task", function(req, res) {
-    if (req.isAuthenticated()) {
-      console.log("Creating todo");
-      db.ToDo.create({
-        task: req.body.task_name,
-        completed: false,
-        ownerUuid: req.user.uuid
-      }).then(function(dbTodo) {
-        res.redirect("/createtasks");
-        // res.redirect("/"); /* blocked out to prevent adding task to direct to dashboard*/
-      });
-    } else {
-      res.redirect("/login");
-    }
-  });
-
-  //Delete a Task
-  app.post("/task-delete/:id", function(req, res) {
-    if (req.isAuthenticated()) {
-      console.log("Deleting a task");
-      db.ToDo.destroy({
-        where: {
-          id: req.params.id
-        }
-      }).then(function(dbTodo) {
-        // res.send({});
-        res.end();
-      });
-    } else {
-      res.redirect("/login");
     }
   });
 };

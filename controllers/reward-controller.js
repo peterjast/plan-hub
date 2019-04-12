@@ -10,7 +10,7 @@ module.exports = function(app) {
           dbReward.save();
         })
         .then(function() {
-          res.redirect("/");
+          res.redirect("/createtasks");
         });
     }
   });
@@ -23,7 +23,7 @@ module.exports = function(app) {
           dbReward.save();
         })
         .then(function() {
-          res.redirect("/");
+          res.redirect("/createtasks");
         });
     }
   });
@@ -36,7 +36,7 @@ module.exports = function(app) {
         chosen: false,
         ownerUuid: req.user.uuid
       }).then(function(dbReward) {
-        res.redirect("/");
+        res.redirect("/createtasks");
       });
     } else {
       res.redirect("/login");
@@ -47,12 +47,12 @@ module.exports = function(app) {
   app.post("/item-delete/:id", function(req, res) {
     if (req.isAuthenticated()) {
       console.log("Deleting an item");
-      db.reward.destroy({
-          where: {
+      db.Reward.destroy({
+        where: {
           id: req.params.id
         }
       }).then(function(dbReward) {
-        res.redirect("/");
+        res.redirect("/createtasks");
       });
     } else {
       res.redirect("/login");
