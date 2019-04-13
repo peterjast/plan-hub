@@ -47,15 +47,26 @@
     <div class="modal-content">
       <div id="gif-container">
         <h4>You did it!</h4>
-        <img src="{{gif}}" style="max-width: 90%; max-height: 360px;" />
-        <p>Good job completing all your tasks! <button class="btn" id="choose-reward">Choose a reward!</button></p>
+        <img src="{{gif}}" class="main-font" style="max-width: 90%; max-height: 360px;" />
+        <p>Good job completing all your tasks! 
+          <br><br>
+          <button class="rewards-button" id="choose-reward">
+            Choose a reward!
+          </button>
+        </p>
       </div>
       <div id="reward-container" class="row" style="display:none">
         <div class="col s12 tasklist">
         <ul id="reward_list">
         {{#each rewards}}
-          <li><form method="post" action="/item-chosen/{{id}}">{{item}}
-          <button type="submit" class="btn modal-close">Pick Me</button></form></li>
+          <li>
+            <form method="post" action="/item-chosen/{{id}}">{{item}}
+            <br><br>
+              <button type="submit" class="btn modal-close rewards-button">
+                Pick Me
+              </button>
+            </form>
+          </li>
         {{/each}}
         </ul>
       </div>
