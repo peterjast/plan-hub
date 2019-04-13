@@ -1,15 +1,16 @@
+<body style="background:#f19833; !important">
     <div id="container-login">
 
         <div id="title">
-            <img src="/assets/images/logo.jpg" height="300" />
+            <img id="logo" src="/assets/images/logo.jpg" width="550" />
             <br>
-            <img src="/assets/images/planhub.png" height="97" />
+            <img id="notpornhub" src="/assets/images/notpornhub.png" width="550" />
         </div>
         <p>
-            Does your child have trouble staying on task? 
+            Does your child have trouble staying on task?
             <br><br>
             Our app is intended to provide some incentive-based structure
-            in a fun way. 
+            in a fun way.
             <br><br>
             We encourage you to sign up below and give it a try!
         </p>
@@ -17,7 +18,7 @@
         {{#if errors}}
         <div>
             {{#each errors}}
-                <div>{{this}}</div>
+            <div>{{this}}</div>
             {{/each}}
         </div>
         {{/if}}
@@ -27,7 +28,8 @@
                 <div class="input-addon">
                     <i class="material-icons">email</i>
                 </div>
-                <input id="username" name="email" placeholder="Email" type="email" required class="validate" autocomplete="off">
+                <input id="username" name="email" placeholder="Email" type="email" required class="validate"
+                    autocomplete="off">
             </div>
 
             <div class="clearfix"></div>
@@ -39,7 +41,7 @@
                 <input id="password" name="password" placeholder="Password" type="password" required class="validate"
                     autocomplete="off">
             </div>
-
+            <br>
             <input type="submit" value="Log In" />
         </form>
 
@@ -47,5 +49,6 @@
             <span style="color: #657575">Don't have an account yet?</span>
             <a href="register"><button id="register-link">Register here</button></a>
         </div>
-       
+
     </div>
+</body>
