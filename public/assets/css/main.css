@@ -13,7 +13,7 @@ body {
     bottom: 20px;
     top: 20px;
     margin: auto;
-    width: 90%;
+    width: 750px;
     border-radius: 0.35em;
     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.25);
     text-align: center;
@@ -35,7 +35,7 @@ p {
     position: relative;
     top: 20px;
     margin: auto;
-    width: 90%;
+    width: 750px;
     border-radius: 0.35em;
     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.25);
     text-align: center;
@@ -159,7 +159,7 @@ input[type=submit] {
     border-radius: 3px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
     #registerlogo {
         width: 65% !important;
     }
@@ -167,7 +167,9 @@ input[type=submit] {
     #lockstyle {
         font-size: 40px !important;
     }
-
+    #container-register, #container-login {
+        width:90%;
+    }
     #chores,
     #logo,
     #notpornhub,
