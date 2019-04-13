@@ -6298,19 +6298,19 @@ label {
    ========================================================================== */
 /* Style Placeholders */
 ::-webkit-input-placeholder {
-  color: #d1d1d1;
+  color: #444;
 }
 ::-moz-placeholder {
-  color: #d1d1d1;
+  color: #444;
 }
 :-ms-input-placeholder {
-  color: #d1d1d1;
+  color: #444;
 }
 ::-ms-input-placeholder {
-  color: #d1d1d1;
+  color: #444;
 }
 ::placeholder {
-  color: #d1d1d1;
+  color: #444;
 }
 
 /* Text inputs */
