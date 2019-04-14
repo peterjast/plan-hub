@@ -87,7 +87,7 @@ h1 {
 }
 
 input[type=text] {
-    color: #949494;
+    color: #000;
     margin: 0;
     background-color: #ededed;
     border: 1px solid #ededed;
@@ -100,7 +100,7 @@ input[type=text]:focus {
 }
 
 input[type=password] {
-    color: #949494;
+    color: #000;
     margin: 0;
     background-color: #ededed;
     border: 1px solid #ededed;
@@ -113,7 +113,7 @@ input[type=password]:focus {
 }
 
 input[type=email] {
-    color: #949494;
+    color: #000;
     margin: 0;
     background-color: #ededed;
     border: 1px solid #ededed;
