@@ -23,10 +23,9 @@ Do you have a child that has trouble staying on task? Maybe they just need a lit
 ## Contributors
 
 * Justin Graffeo - front-end - (UI & UX), routing
-* Derek Erickson - front-end - (UI & UX), design
+* Derek Ericson - front-end - (UI & UX), design
 * Peter Staker - back-end - authentication, routing, QA
 * Sonja Rasmussen - back-end - concept, database, authentication, routing
-
 
 ## Link to deployed app: [https://safe-sea-10677.herokuapp.com/login](https://safe-sea-10677.herokuapp.com/login)
 

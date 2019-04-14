@@ -10,39 +10,45 @@ body {
 #container-login {
     background-color: #FCFCFC;
     position: relative;
+    bottom: 20px;
+    top: 20px;
     margin: auto;
-    top: 5%;
-    width: 90%;
+    width: 750px;
     border-radius: 0.35em;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.25);
     text-align: center;
+}
+
+#chores,
+#logo {
+    padding-top: 20px;
 }
 
 p {
     color: grey;
     padding: 15px;
-    font-size: 15px;
+    font-size: 25px;
 }
 
 #container-register {
     background-color: #FCFCFC;
     position: relative;
-    top: 5%;
+    top: 20px;
     margin: auto;
-    width: 90%;
+    width: 750px;
     border-radius: 0.35em;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.25);
     text-align: center;
 }
 
 #title {
     position: relative;
-    background-color: #90caf9;
+    background-color: black;
     width: 100%;
     padding: 15px 0px;
     border-top-left-radius: 0.22em;
     border-top-right-radius: 0.22em;
-    font-size: 22px;
+    font-size: 50px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -53,11 +59,12 @@ p {
 
 .input {
     margin: auto;
-    width: 240px;
+    width: 600px;
     border-radius: 4px;
     background-color: #ededed;
     padding: 8px 0px;
     margin-top: 15px;
+    font-size: 25px;
 }
 
 .input-addon {
@@ -76,7 +83,7 @@ input[type=checkbox] {
 }
 
 h1 {
-    color: white;
+    color: #f19833;
 }
 
 input[type=text] {
@@ -118,12 +125,9 @@ input[type=email]:focus {
     border: 1px solid #ededed;
 }
 
-
-
-
 input[type=submit] {
-    padding: 6px 25px;
-    background: #90caf9;
+    padding: 6px 50px;
+    background: #f19833;
     color: #fff;
     font-weight: bold;
     border: 0 none;
@@ -135,7 +139,7 @@ input[type=submit] {
     margin: auto;
     padding: 16px 0;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
     width: 85%;
     border-top: 1px solid #C1C3C6;
 }
@@ -146,11 +150,30 @@ input[type=submit] {
 
 #register-link {
     margin-top: 10px;
-    padding: 6px 25px;
-    background: #90caf9;
+    padding: 6px 50px;
+    background: #f19833;
     color: #fff;
     font-weight: bold;
     border: 0 none;
     cursor: pointer;
     border-radius: 3px;
+}
+
+@media (max-width: 650px) {
+    #registerlogo {
+        width: 65% !important;
+    }
+
+    #lockstyle {
+        font-size: 40px !important;
+    }
+    #container-register, #container-login {
+        width:90%;
+    }
+    #chores,
+    #logo,
+    #notpornhub,
+    .input {
+        width: 90% !important;
+    }
 }
