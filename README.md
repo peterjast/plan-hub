@@ -1,5 +1,5 @@
 # Plan Hub
-Do you have a child that has trouble staying on task? Maybe they just need a little incentive boost and a little bit of structure.  Plan Hub makes completing tasks and chores fun and rewarding."
+Do you have a child that has trouble staying on task? Maybe they just need a little incentive boost and a little bit of structure.  Plan Hub makes completing tasks and chores fun and rewarding. Parents can use our tool to set up a list of tasks to be completed by their child, add rewards to incentivize productivity, and monitor the completion of these tasks. Using the kids corner, kids can update their to do list as they complete tasks and can select a reward when they complete their list.
 
 ## Tools:
 * Javascript
